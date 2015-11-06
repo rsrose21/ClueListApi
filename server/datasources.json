@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysqlDs": {
+      "name": "mysqlDs",
+      "connector": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "database": "cluelist",
+      "username": "root",
+      "password": "root"
+  }
+}
