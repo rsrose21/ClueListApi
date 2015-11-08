@@ -25,5 +25,8 @@
     "type": "",
     "url": ""
   },
-  "description": "cluelist"
+  "description": "cluelist",
+  "engines": {
+    "node": "0.12.x"
+  }
 }

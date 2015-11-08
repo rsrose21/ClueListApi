@@ -8,6 +8,7 @@ module.exports = function(app) {
     if (app.dataSources.db.name !== 'Memory' && !process.env.INITDB) {
         return;
     }
+    return;
     var dataSource = app.dataSources.mysqlDs;
 
     async.map(['User', 'AccessToken', 'ACL', 'RoleMapping', 'Role'], createTables, function(err, result){
