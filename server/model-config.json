@@ -14,26 +14,26 @@
     ]
   },
   "User": {
-    "dataSource": "mysqlDs"
+    "dataSource": "db"
   },
   "AccessToken": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": false
   },
   "ACL": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": false
   },
   "Role": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": false
   },
   "factoid": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   }
 }

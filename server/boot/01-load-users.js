@@ -5,13 +5,15 @@ var log = require('debug')('boot:01-automigrate');
 
 module.exports = function(app) {
 
-    if (app.dataSources.db.name !== 'Memory' && !process.env.INITDB) {
+    if (process.env.INITDB === '' + false) {
+        console.log('DB initialized');
         return;
     }
-    return;
-    var dataSource = app.dataSources.mysqlDs;
 
+    var dataSource = app.dataSources.db;
+    console.log('initializing db...');
     async.map(['User', 'AccessToken', 'ACL', 'RoleMapping', 'Role'], createTables, function(err, result){
+        console.log('loading users...');
         createDefaultUsers();
     });
 

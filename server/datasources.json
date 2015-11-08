@@ -2,14 +2,5 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  },
-  "mysqlDs": {
-    "host": "localhost",
-    "port": 3306,
-    "database": "cluelist",
-    "username": "root",
-    "password": "root",
-    "name": "mysqlDs",
-    "connector": "mysql"
   }
 }
