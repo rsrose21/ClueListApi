@@ -4,15 +4,15 @@ var async = require('async');
 var log = require('debug')('boot:01-automigrate');
 
 module.exports = function(app) {
-
-    if (process.env.INITDB === '' + false) {
+    var init = process.env.INITDB || process.env.npm_package_config_initdb;
+    if (init === '' + false) {
         console.log('DB initialized');
         return;
     }
 
     var dataSource = app.dataSources.db;
     console.log('initializing db...');
-    async.map(['User', 'AccessToken', 'ACL', 'RoleMapping', 'Role'], createTables, function(err, result){
+    async.map(['user', 'accessToken', 'userCredential', 'userIdentity', 'ACL', 'RoleMapping', 'Role'], createTables, function(err, result){
         console.log('loading users...');
         createDefaultUsers();
     });
