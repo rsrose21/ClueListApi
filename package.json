@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "pretest": "jshint ."
+    "pretest": "jshint .",
+    "start": "node server/server.js"
   },
   "dependencies": {
     "async": "^1.5.0",
@@ -28,5 +29,10 @@
   "description": "cluelist",
   "engines": {
     "node": "0.12.x"
+  },
+  "config": {
+    "env": "local",
+    "db": "mysql://username:pw@host/db?reconnect=true",
+    "initdb": false
   }
 }

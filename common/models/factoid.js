@@ -46,11 +46,18 @@ module.exports = function(Factoid) {
         var mySQLDataSource = Factoid.getDataSource();
         var mySQLPool = mySQLDataSource.connector.client;
         analyze(terms, function(words) {
-            var sql = "SELECT *, MATCH(description) AGAINST ('" + formatTerms(words) + "' IN BOOLEAN MODE) AS relevance FROM `factoid` WHERE CHAR_LENGTH(description) < " + charLimit + " AND MATCH(description) AGAINST ('" + formatTerms(words) + "' IN BOOLEAN MODE) ORDER BY relevance DESC";
+            var sql = "SELECT *, MATCH(description) AGAINST ('" + formatTerms(words) + "' IN BOOLEAN MODE) AS relevance FROM `factoid` WHERE MATCH(description) AGAINST ('" + formatTerms(words) + "' IN BOOLEAN MODE) ORDER BY RAND()";
             console.log(sql);
             mySQLPool.query(sql, function(err, rows, fields) {
                 var item;
+
+                if (err || !Array.isArray(rows)) {
+                  data.error = err;
+                  cb(null, data);
+                }
+
                 console.log('Found ' + rows.length + ' results');
+
                 if (rows.length !== 0){
                     if (Array.isArray(words)) {
                         data.clue = words.join(' ');
